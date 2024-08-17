@@ -18,7 +18,9 @@
       </div>
       <nav>
         <ul>
-            <li><a href="/" >All Groups</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'group-index' %}" >All Groups</a></li>
+            <li><a href="{% url 'group-create' %}">Create a Group</a></li>
             <li><a href="{% url 'about' %}">About</a></li>        
         </ul>
       </nav>

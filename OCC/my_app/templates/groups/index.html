@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/groups/group-index.css' %}" />
+{% endblock %}
+{% block content %}
+
+<section>
+  <div>
+    <h1>Community Page</h1>
+    <section>
+        <div class = "container">
+            {% for group in groups %}
+            <a href="{% url 'group-detail' group.id%}">
+                {% if not group.image %}
+                    <div class = "circular-text">
+                        <p class = "icon">{{group.placeholder}}</p>
+                    </div>
+                {% else %}
+                    <div class = "circular-image">
+                        <img src={{group.image.url}} />
+                    </div>
+                {% endif %}
+                <h3>{{group.name}}</h3>
+                <p>{{group.description}}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+  </div>
+</section>
+
+{% endblock %}
