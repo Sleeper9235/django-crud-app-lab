@@ -33,10 +33,23 @@
           {% endif %}
         </div>
         <div>
+          
+        </div>
+        <div>
+          <form action="{% url 'add-thread' group.id %}" method="post" class="subsection-content" autocomplete="off">
+            {% csrf_token %} 
+            {{ thread_form.as_p }}
+            <button type="submit" class="btn submit">Add Thread</button>
+        </div>
+        <div>
+          {% if group.thread_set.all.count %}
             {% for thread in group.thread_set.all %}
               <h3>{{thread.name}}</h3>
               <p>{{thread.description}}</p>
             {% endfor %}
+          {% else %}
+            <p>{{group.name}} has no active threads!</p>
+          {% endif %}
         </div>
     </section>
   </div>

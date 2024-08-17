@@ -9,4 +9,5 @@ urlpatterns = [
     path('groups/create/', views.GroupCreate.as_view(), name='group-create'),
     path('groups/<int:pk>/update/', views.GroupUpdate.as_view(), name='group-update'),
     path('groups/<int:pk>/delete/', views.GroupDelete.as_view(), name='group-delete'),
+    path('groups/<int:group_id>/add-thread/', views.add_thread, name="add-thread")
 ]

@@ -1,7 +1,9 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Group
+from .forms import ThreadForm
+
 
 
 # Create your views here.
@@ -17,7 +19,7 @@ def group_index(request):
 
 def group_detail(request, group_id):
     group = Group.objects.get(pk=group_id)
-
+    thread_form = ThreadForm()
     if group.placeholder == " ":
         words = group.name.split()
         word_length = len(words)
@@ -38,9 +40,18 @@ def group_detail(request, group_id):
         group.save()
 
     if group is not None:
-        return render(request, 'groups/detail.html', {'group': group })
+        return render(request, 'groups/detail.html', {'group': group, 'thread_form': thread_form })
     else:
-        raise Http404('Group does not exist')    
+        raise Http404('Group does not exist')
+
+def add_thread(request, group_id):
+    form = ThreadForm(request.POST)
+    if form.is_valid():
+        new_thread = form.save(commit=False)
+        new_thread.group_id = group_id
+        new_thread.save()
+    return redirect('group-detail', group_id = group_id)    
+
 
 class GroupCreate(CreateView): 
     model = Group
