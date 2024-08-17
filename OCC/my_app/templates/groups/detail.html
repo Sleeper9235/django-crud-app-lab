@@ -32,6 +32,12 @@
             </div>
           {% endif %}
         </div>
+        <div>
+            {% for thread in group.thread_set.all %}
+              <h3>{{thread.name}}</h3>
+              <p>{{thread.description}}</p>
+            {% endfor %}
+        </div>
     </section>
   </div>
 </section>

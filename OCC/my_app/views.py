@@ -21,7 +21,7 @@ def group_detail(request, group_id):
     if group.placeholder == " ":
         words = group.name.split()
         word_length = len(words)
-        
+
         first_word = group.name.split(" ")[0]
         second_word = group.name.split(" ")[1] if word_length >= 2 else "" 
         third_word = group.name.split(" ")[2] if word_length >= 3 else ""
@@ -52,4 +52,4 @@ class GroupUpdate(UpdateView):
 
 class GroupDelete(DeleteView):
     model = Group
-    success_url = '/groups'
+    success_url = '/groups/'
