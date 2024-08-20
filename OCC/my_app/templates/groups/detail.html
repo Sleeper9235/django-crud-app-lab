@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/groups/group-detail.css' %}" />
 {% endblock %}
 {% block content %}
 
@@ -10,27 +9,35 @@
     <section>
         <div >
           {% if not group.image %}
-          <div class = "circular-text">
-            <p class = "icon">{{group.placeholder}}</p>
+          <div class="container">
+              <div class = "circular-text">
+                <p class = "icon">{{group.placeholder}}</p>
+              </div>
           </div>
           <h3>{{group.name}}</h3>
           <p>{{group.description}}</p>
+          {% else %}
+          <div>
+            <div class="container">
+              <div class = "circular-image">
+                  <img style="border-radius: 50%;"src={{group.image.url}} />
+              </div>
+            </div>
+            <div class="group-name">
+              <h1>{{group.name}}</h1>
+            </div>
+            <div class="group-description">
+              <p>{{group.description}}</p>
+            </div>
+          </div>
+          {% endif %}
+          
+          
           <div>
             <a href="{% url 'group-update' group.id %}" >Edit</a>
             <a href="{% url 'group-delete' group.id %}" >Delete</a>
           </div>
-          {% else %}
-            <div class = "circular-image">
-                <img style="border-radius: 50%;"src={{group.image.url}} />
-            </div>
-            <h3>{{group.name}}</h3>
-            <p>{{group.description}}</p>
-            <p>{{stock_image}}</p>
-            <div>
-              <a href="{% url 'group-update' group.id %}" >Edit</a>
-              <a href="{% url 'group-delete' group.id %}" >Delete</a>
-            </div>
-          {% endif %}
+
         </div>
         <div>
           
@@ -41,11 +48,16 @@
             {{ thread_form.as_p }}
             <button type="submit" class="btn submit">Add Thread</button>
         </div>
-        <div>
+
+        <div class = "thread-container">
           {% if group.thread_set.all.count %}
             {% for thread in group.thread_set.all %}
-              <h3>{{thread.name}}</h3>
-              <p>{{thread.description}}</p>
+              <div class="each-thread">
+                <h3 class="thread-name">{{thread.name}}</h3>
+                <p class="thread-description">{{thread.description}}</p>
+                <a href="{% url 'thread-update' thread.id %}" >Edit</a>
+                <a href="{% url 'thread-delete' thread.id %}" >Delete</a>
+              </div>
             {% endfor %}
           {% else %}
             <p>{{group.name}} has no active threads!</p>

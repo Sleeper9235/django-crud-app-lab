@@ -7,8 +7,40 @@
 
 <section>
   <div>
-    <h1>Home page</h1>
+    <h1>Online Discussion Board</h1>
     <section>
+      {% if not user.is_authenticated %}
+      <section>
+        <form action="{% url 'home' %}" method="post" class="login">
+          <h1>Login</h1>
+          {% csrf_token %} {{ form.as_p }}
+          <input type="hidden" name="next" value="{{ next }}" />
+          <button type="submit" class="btn submit">Login</button>
+        </form>
+      </section>
+      {% else %}
+        <section>
+          <div class = "container">
+            {% for group in groups %}
+            <div class = "each-group">
+                <a href="{% url 'group-detail' group.id%}">
+                    {% if not group.image %}
+                        <div class = "circular-text">
+                            <p class = "icon">{{group.placeholder}}</p>
+                        </div>
+                    {% else %}
+                        <div class = "circular-image">
+                            <img src={{group.image.url}} />
+                        </div>
+                    {% endif %} 
+                    <h2>{{group.name}}</h2>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        </section>
+      {% endif %}
+
     </section>
   </div>
 </section>

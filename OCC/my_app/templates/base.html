@@ -6,22 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <title>OCC</title>
+    <title>ODB</title>
     {% block head %} 
     {% endblock %}
   </head>
   <body>
     <header>
-      <div class="header-logo-container">
-        <a href="/">
-        </a>
-      </div>
       <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="{% url 'group-index' %}" >All Groups</a></li>
-            <li><a href="{% url 'group-create' %}">Create a Group</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>        
+          {% if user.is_authenticated %}
+            <li style="float:left"><a href="/">Home</a></li>
+            <li style="float:left"><a href="{% url 'group-index' %}" >All Groups</a></li>
+            <li style="float:left"><a href="{% url 'group-create' %}">Create a Group</a></li>
+            <li style="float:right"><a href="{% url 'about' %}">About</a></li>
+            <li>
+              <form style="float:right" id="logout-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+              </form>
+            </li>
+          {% else %}
+            <li style="float:right"><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li style="float:right"><a href="{% url 'about' %}">About</a></li>
+            <li style="float:right"><a href="{% url 'home' %}">Login</a></li>
+          {% endif %}
         </ul>
       </nav>
     </header>

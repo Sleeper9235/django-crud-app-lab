@@ -1,4 +1,5 @@
-/* static/css/base.css  */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* static/css/base.css  */
 
@@ -27,28 +28,13 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
+    font-family: "Rubik", sans-serif;
+    font-size: medium;
     min-height: 100vh;
-    --nav-bg: rgba(104, 197, 248, 0.7);
-    --nav-bg-ff: rgba(104, 197, 248, 0.9);
-    --borders: rgb(36, 116, 248) solid 2px;
-    --text-color: rgb(17, 20, 17);
-    --link-hover-color: rgb(16, 56, 158);
-    --button-bg: rgb(245, 245, 245);
-    --button-bg-hover: rgb(226, 226, 226);
-    --submit: rgb(26, 128, 0);
-    --warn: rgb(255, 102, 0);
-    --danger: rgb(220, 20, 30);
-    --secondary: rgb(57, 57, 57);
-    --card-box-shadow: 5px 5px 6px -1px #aaa;
-    --font-xtreme: 4.2rem;
-    --font-xxl: 3.6rem;
-    --font-xl: 2.4rem;
-    --font-l: 1.8rem;
-    --font-reg: 1.6rem;
-    --card-border-radius: 6px;
+    color: rgb(245, 245, 245);;
+    background-color: #04122d;
+    --nav-bg: #0c1443;
+    --nav-bg-ff: #04122d;
   }
   
   header {
@@ -60,3 +46,151 @@ html {
   nav {
     margin: 10px;
   }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2e145d;
+  }
+  
+  li {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color:#261341;
+  }
+
+  #logout-form button {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-family: inherit;
+  }
+  
+  #logout-form button:hover {
+    background-color:#261341;
+
+  }
+  
+  p {
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    color: white;
+  }
+  .active {
+    background-color: green;
+  }
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+.each-group {
+    background-color: #2e145d;
+    margin: 1em;
+    border: 2px solid black;
+    border-radius: 20%;
+}.each-group:hover {
+    box-shadow: 10px 5px 5px black;
+    transition: 0.3s;
+}
+
+.circular-image { 
+    position: relative; 
+    margin: 20px 20px;
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden;
+    border-radius: 50%; 
+
+} .circular-image img { 
+    width: 100%; 
+    height: 100%;
+}
+
+.icon {
+    font-family: "Rubik", sans-serif;
+    font-weight: 600;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #261341;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    line-height: 150px;
+    margin: 20px 20px;
+} 
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.thread-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  border: white solid 2px;
+  width: 50rem;
+  height: 50rem;
+}
+
+.each-thread{
+  background-color: #0c1443;
+  margin: 1em;
+  border: 2px solid white;
+}
+
+.thread-name{
+  border: white solid 2px;
+  width: fit-content;
+	margin: 0;
+	padding: 0px 0px 6px 0px;
+	font-size: 51px;
+	line-height: 44px;
+	letter-spacing: -2px;
+	font-weight: bold;
+  background: #261341;
+}
+
+.thread-description{
+  border: white solid 2px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: fit-content;
+}
+
