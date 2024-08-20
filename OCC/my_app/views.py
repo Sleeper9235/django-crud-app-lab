@@ -93,6 +93,8 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'signup.html', context)
 
+
+@login_required
 def thread_update(request, id):
     thread = Thread.objects.get(id = id)
     
@@ -104,9 +106,7 @@ def thread_update(request, id):
     else:
         form = ThreadForm(instance=thread)
         
-    return render(request,
-                  'my_app/thread_update.html', 
-                  {'form': form})
+    return render(request, 'my_app/thread_update.html', {'form': form})
     
 class GroupCreate(LoginRequiredMixin, CreateView): 
     model = Group
